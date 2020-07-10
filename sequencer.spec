@@ -84,6 +84,9 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Fri Jul 10 2020 Matt Rippa <mrippa@gemini.edu> 3.15.8-2.2.8.20200710git5c91c94
+- First successful tito build --rpm (mrippa@gemini.edu)
+
 * Fri Jul 10 2020 Matt Rippa <mrippa@gemini.edu> 3.15.8-2.2.8.20200710gitaf3c52b
 - new package built with tito
 
