@@ -11,7 +11,7 @@
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: %{version}
-Release: %release.%(date +"%Y%m%d")svn%{checkout}%{?dist}
+Release: %release.%(date +"%Y%m%d")git%{checkout}%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -74,9 +74,12 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
-* Fri Mar 10 2012 Mathew Rippa <mrippa@gemini.edu> 2.1.13-0
+* Fri Jul 10 2020 Matt Rippa <mrippa@gemini.edu> 3.15.8-2.2.8.20200710gitaf3c52b
+- new package built with tito
+
+* Fri Mar 9 2012 Mathew Rippa <mrippa@gemini.edu> 2.1.13-0
 - r3.14.12.2, rpmlint compliant
-* Wed Feb 18 2008 Felix Kraemer <fkraemer@gemini.edu> 2.0.11-0
+* Mon Feb 11 2008 Felix Kraemer <fkraemer@gemini.edu> 2.0.11-0
 - changes to be compliant with EPICS build mechanism
 * Wed Dec 19 2007 Felix Kraemer <fkraemer@gemini.edu> 2.0.11-0
 - initial release
