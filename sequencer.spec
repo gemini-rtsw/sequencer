@@ -12,6 +12,7 @@ Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: %{version}
 Release: %release.%(date +"%Y%m%d")git%{checkout}%{?dist}
+NameVersionR: %{} 
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -45,11 +46,11 @@ make
 export DONT_STRIP=1
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/%{_prefix}/%{gemopt}/epics/modules/seq
-cp -r %{_builddir}/dbd $RPM_BUILD_ROOT/%{_prefix}/%{name}/epics/modules/seq
-cp -r %{_builddir}/bin $RPM_BUILD_ROOT/%{_prefix}/%{name}/epics/modules/seq
-cp -r %{_builddir}/lib $RPM_BUILD_ROOT/%{_prefix}/%{name}/epics/modules/seq
-cp -r %{_builddir}/include $RPM_BUILD_ROOT/%{_prefix}/%{name}/epics/modules/seq
-cp -r %{_builddir}/configure $RPM_BUILD_ROOT/%{_prefix}/%{name}/epics/modules/seq/
+cp -r dbd $RPM_BUILD_ROOT/%{_prefix}/%{name}/epics/modules/seq
+cp -r bin $RPM_BUILD_ROOT/%{_prefix}/%{name}/epics/modules/seq
+cp -r lib $RPM_BUILD_ROOT/%{_prefix}/%{name}/epics/modules/seq
+cp -r include $RPM_BUILD_ROOT/%{_prefix}/%{name}/epics/modules/seq
+cp -r configure $RPM_BUILD_ROOT/%{_prefix}/%{name}/epics/modules/seq/
 find $RPM_BUILD_ROOT/%{_prefix}/%{name}/configure -name ".git" -exec rm -rf {} \;
 
 
