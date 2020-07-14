@@ -84,6 +84,10 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Mon Jul 13 2020 Matt Rippa <mrippa@gemini.edu> 3.15.8-2.2.8.20200713gitc7b4fa2
+- Added epics-base to requires (mrippa@gemini.edu)
+- Added .tito/releasers.conf (mrippa@gemini.edu)
+
 * Fri Jul 10 2020 Matt Rippa <mrippa@gemini.edu> 3.15.8-2.2.8.20200710git5c91c94
 - First successful tito build --rpm (mrippa@gemini.edu)
 
