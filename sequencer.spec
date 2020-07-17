@@ -84,6 +84,9 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Fri Jul 17 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.20200717gite6b33fb
+- corrected EPICS_BASE in config/RELEASE
+
 * Wed Jul 15 2020 Matt Rippa <mrippa@gemini.edu> 3.15.8-2.2.8.20200715gite29f3d3
 - New epics path and tito releaser tests. (mrippa@gemini.edu)
 
