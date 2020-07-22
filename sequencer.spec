@@ -28,8 +28,8 @@ Source0: %{name}-%{version}.tar.gz
 ExclusiveArch: %{arch}
 Prefix: %{_prefix}
 ## You may specify dependencies here
-BuildRequires: epics-devel
-Requires: epicse
+BuildRequires: epics-base-devel
+Requires: epics-base
 ## Switch dependency checking off
 # AutoReqProv: no
 
