@@ -84,6 +84,10 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.20200722
+- adapted Release token (fkraemer@gemini.edu)
+- corrected EPICS_BASE in config/RELEASE (fkraemer@gemini.edu)
+
 * Fri Jul 17 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.20200717gite6b33fb
 - corrected EPICS_BASE in config/RELEASE
 
