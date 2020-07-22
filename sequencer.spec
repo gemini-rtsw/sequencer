@@ -28,7 +28,7 @@ Source0: %{name}-%{version}.tar.gz
 ExclusiveArch: %{arch}
 Prefix: %{_prefix}
 ## You may specify dependencies here
-BuildRequires: epics-base-devel
+BuildRequires: epics-base-devel re2c
 Requires: epics-base
 ## Switch dependency checking off
 # AutoReqProv: no
@@ -84,6 +84,9 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu>
+- test
+
 * Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.0.20200722
 - changed path back and Requires tag to epics-base(-devel)
   (fkraemer@gemini.edu)
