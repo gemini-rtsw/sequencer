@@ -1,7 +1,7 @@
 %define _prefix /gem_base/epics/support
 %define name sequencer
 %define version 3.15.8
-%define release 2.2.8
+%define release 2.2.8.0
 %define repository gemdev
 %define debug_package %{nil}
 %define arch %(uname -m)
@@ -84,6 +84,16 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.0.20200722
+- changed path back and Requires tag to epics-base(-devel)
+  (fkraemer@gemini.edu)
+- adapted EPICS Path (fkraemer@gemini.edu)
+
+* Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu>
+- changed path back and Requires tag to epics-base(-devel)
+  (fkraemer@gemini.edu)
+- adapted EPICS Path (fkraemer@gemini.edu)
+
 * Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.20200722
 - adapted Release token (fkraemer@gemini.edu)
 - corrected EPICS_BASE in config/RELEASE (fkraemer@gemini.edu)
