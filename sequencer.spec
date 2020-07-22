@@ -84,6 +84,11 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.1.20200722
+- bumped specfile (fkraemer@gemini.edu)
+- added sequencer.spec (fkraemer@gemini.edu)
+- added BuildRequirement re2c (fkraemer@gemini.edu)
+
 * Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu>
 - added BuildRequirement re2c (fkraemer@gemini.edu)
 
