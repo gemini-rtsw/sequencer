@@ -85,6 +85,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu>
+- added BuildRequirement re2c (fkraemer@gemini.edu)
+
+* Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu>
 - test
 
 * Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.0.20200722
