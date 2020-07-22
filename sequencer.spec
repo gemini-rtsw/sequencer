@@ -1,7 +1,7 @@
 %define _prefix /gem_base/epics/support
 %define name sequencer
 %define version 3.15.8
-%define release 2.2.8.1
+%define release 2.2.8
 %define repository gemdev
 %define debug_package %{nil}
 %define arch %(uname -m)
