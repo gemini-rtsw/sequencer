@@ -1,7 +1,5 @@
 %define _prefix /gem_base/epics/support
 %define name sequencer
-%define version 3.15.8
-%define release 2.2.8
 %define repository gemdev
 %define debug_package %{nil}
 %define arch %(uname -m)
@@ -20,8 +18,8 @@
 
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
-Version: %{version}
-Release: %release.%(date +"%Y%m%d%H%M")%{checkout}%{?dist}
+Version: 2.2.8
+Release: 2%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -84,6 +82,14 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Thu Oct 08 2020 fkraemer <fkraemer@gemini.edu> 2.2.8-2
+- applied new version/release scheme and new yum repository structure
+
+* Wed Aug 05 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.2020080504146544bda
+- Release tag enriched with hour and minute (%%H%%M) to be able to build
+  several RPMs a day without messing up the repo (fkraemer@gemini.edu)
+- test commit to test if I can still push changes (fkraemer@gemini.edu)
+
 * Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.20200722f61ed7e
 - finally the right Release tag (fkraemer@gemini.edu)
 
