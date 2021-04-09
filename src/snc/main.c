@@ -51,15 +51,8 @@ int main(int argc, char *argv[])
 	/* Get command arguments */
 	parse_args(argc, argv);
 
-	in = fopen(input_name, "r");
-	if (in == NULL)
-	{
-		report("error opening input file: %s: %s\n", input_name,
-			strerror(errno));
-		return EXIT_FAILURE;
-	}
-	out = fopen(output_name, "w");
-	if (out == NULL)
+	input_file = fopen(input_name, "r");
+	if (input_file == NULL)
 	{
 		report("error opening input file: %s: %s\n", input_name,
 			strerror(errno));
@@ -81,8 +74,7 @@ int main(int argc, char *argv[])
 	output_file = fopen(output_name, "w");
 	if (output_file == NULL)
 	{
-		report("error opening output file: %s: %s\n", output_name,
-			strerror(errno));
+		perror(output_name);
 		return EXIT_FAILURE;
 	}
 
@@ -90,33 +82,14 @@ int main(int argc, char *argv[])
 
 	if (fclose(output_file))
 	{
-		report("error closing output file: %s: %s\n", output_name,
-			strerror(errno));
-		err_cnt++;
-	}
-
-	output_file = fopen(output_name, "w");
-	if (output_file == NULL)
-	{
-		report("error opening output file: %s: %s\n", output_name,
-			strerror(errno));
-		return EXIT_FAILURE;
-	}
-
-	generate_code(prg);
-
-	if (fclose(output_file))
-	{
-		report("error closing output file: %s: %s\n", output_name,
-			strerror(errno));
+		perror(output_name);
 		err_cnt++;
 	}
 
 	if (err_cnt > 0)
 	{
 		if (unlink(output_name))
-			report("error removing partially written output file: %s: %s\n",
-				output_name, strerror(errno));
+			perror(output_name);
 		return EXIT_FAILURE;
 	}
 	return EXIT_SUCCESS;
