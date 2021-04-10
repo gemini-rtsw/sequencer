@@ -10,6 +10,7 @@ in the file LICENSE that is included with this distribution.
 /*************************************************************************\
                 Main program, reporting and printing procedures
 \*************************************************************************/
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -51,7 +52,8 @@ int main(int argc, char *argv[])
 	in = fopen(input_name, "r");
 	if (in == NULL)
 	{
-		perror(input_name);
+		report("error opening input file: %s: %s\n", input_name,
+			strerror(errno));
 		return EXIT_FAILURE;
 	}
 	out = fopen(output_name, "w");
@@ -72,7 +74,31 @@ int main(int argc, char *argv[])
 	if (err_cnt == 0)
 		generate_code(prg);
 
-	return err_cnt ? EXIT_FAILURE : EXIT_SUCCESS;
+	output_file = fopen(output_name, "w");
+	if (output_file == NULL)
+	{
+		report("error opening output file: %s: %s\n", output_name,
+			strerror(errno));
+		return EXIT_FAILURE;
+	}
+
+	generate_code(prg);
+
+	if (fclose(output_file))
+	{
+		report("error closing output file: %s: %s\n", output_name,
+			strerror(errno));
+		err_cnt++;
+	}
+
+	if (err_cnt > 0)
+	{
+		if (unlink(output_name))
+			report("error removing partially written output file: %s: %s\n",
+				output_name, strerror(errno));
+		return EXIT_FAILURE;
+	}
+	return EXIT_SUCCESS;
 }
 
 /* Initialize options, input_name, and output_name from arguments. */
