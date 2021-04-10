@@ -51,8 +51,15 @@ int main(int argc, char *argv[])
 	/* Get command arguments */
 	parse_args(argc, argv);
 
-	input_file = fopen(input_name, "r");
-	if (input_file == NULL)
+	in = fopen(input_name, "r");
+	if (in == NULL)
+	{
+		report("error opening input file: %s: %s\n", input_name,
+			strerror(errno));
+		return EXIT_FAILURE;
+	}
+	out = fopen(output_name, "w");
+	if (out == NULL)
 	{
 		report("error opening input file: %s: %s\n", input_name,
 			strerror(errno));
@@ -70,6 +77,23 @@ int main(int argc, char *argv[])
 	/* establish precondition for generate_code */
 	if (err_cnt > 0)
 		return EXIT_FAILURE;
+
+	output_file = fopen(output_name, "w");
+	if (output_file == NULL)
+	{
+		report("error opening output file: %s: %s\n", output_name,
+			strerror(errno));
+		return EXIT_FAILURE;
+	}
+
+	generate_code(prg);
+
+	if (fclose(output_file))
+	{
+		report("error closing output file: %s: %s\n", output_name,
+			strerror(errno));
+		err_cnt++;
+	}
 
 	output_file = fopen(output_name, "w");
 	if (output_file == NULL)
