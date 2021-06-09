@@ -19,7 +19,7 @@
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: 2.2.8
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -82,6 +82,11 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Wed Jun 09 2021 Matt Rippa <mrippa@gemini.edu> 2.2.8-3
+- Cherry-pick commits from upstream 5231664..e5e3615
+- Merge from upstream.
+- tests: add test for (non-)existence of output file
+
 * Thu Oct 08 2020 fkraemer <fkraemer@gemini.edu> 2.2.8-2
 - applied new version/release scheme and new yum repository structure
 
