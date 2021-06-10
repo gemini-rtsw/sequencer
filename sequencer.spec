@@ -18,7 +18,7 @@
 
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
-Version: 2.2.8
+Version: 2.2.9
 Release: 2%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
@@ -82,6 +82,22 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Thu Jun 10 2021 Matt Rippa <mrippa@gemini.edu> 2.2.9-2
+- add cfg directory to boringfile
+- add release notes for 2.2.9
+- bump version to 2.2.9 and adapt the install docs
+- install build rules in the modern way (if available)
+- snc: better error messages when file operations fail
+- snc, build rules: improve behavior when compilation fails
+
+* Thu Jun 10 2021 Matt Rippa <mrippa@gemini.edu>
+- add cfg directory to boringfile
+- add release notes for 2.2.9
+- bump version to 2.2.9 and adapt the install docs
+- install build rules in the modern way (if available)
+- snc: better error messages when file operations fail
+- snc, build rules: improve behavior when compilation fails
+
 * Thu Oct 08 2020 fkraemer <fkraemer@gemini.edu> 2.2.8-2
 - applied new version/release scheme and new yum repository structure
 
