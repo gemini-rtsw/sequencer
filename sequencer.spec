@@ -19,7 +19,7 @@
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: 2.2.9
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -82,6 +82,18 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Tue Jun 22 2021 Matt Rippa <mrippa@gemini.edu> 2.2.9-3
+- git rebase -X theirs master
+- install build rules in the modern way (if available)
+- snc: better error messages when file operations fail
+- snc, build rules: improve behavior when compilation fails
+- Automatic commit of package [sequencer] minor release [2.2.9-2].
+- add cfg directory to boringfile
+- add release notes for 2.2.9
+- bump version to 2.2.9 and adapt the install docs
+- install build rules in the modern way (if available)
+- snc: better error messages when file operations fail
+
 * Thu Jun 10 2021 Matt Rippa <mrippa@gemini.edu> 2.2.9-2
 - add cfg directory to boringfile
 - add release notes for 2.2.9
