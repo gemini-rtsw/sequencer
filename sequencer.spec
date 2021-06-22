@@ -19,7 +19,11 @@
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: 2.2.9
+<<<<<<< HEAD
 Release: 4%{?dist}
+=======
+Release: 3%{?dist}
+>>>>>>> 160ae25... Automatic commit of package [sequencer] minor release [2.2.9-3].
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -97,6 +101,12 @@ rm -rf $RPM_BUILD_ROOT
 - changed .tito/releasers.conf to be softlinked to
   /gem_base/usr/share/tito/releasers.conf
 - Fix compile compile time errors.
+
+* Tue Jun 22 2021 Matt Rippa <mrippa@gemini.edu> 2.2.9-3
+- git rebase -X theirs master
+- install build rules in the modern way (if available)
+- snc: better error messages when file operations fail
+- snc, build rules: improve behavior when compilation fails
 - Automatic commit of package [sequencer] minor release [2.2.9-2].
 - add cfg directory to boringfile
 - add release notes for 2.2.9
