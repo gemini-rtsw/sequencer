@@ -16,6 +16,8 @@ in the file LICENSE that is included with this distribution.
 #include <string.h>
 #include <stdarg.h>
 
+#include "osiUnistd.h"
+
 #include "types.h"
 #include "parser.h"
 #include "analysis.h"
@@ -74,8 +76,8 @@ int main(int argc, char *argv[])
 	if (err_cnt == 0)
 		generate_code(prg);
 
-	output_file = fopen(output_name, "w");
-	if (output_file == NULL)
+	out = fopen(output_name, "w");
+	if (out == NULL)
 	{
 		report("error opening output file: %s: %s\n", output_name,
 			strerror(errno));
@@ -84,7 +86,7 @@ int main(int argc, char *argv[])
 
 	generate_code(prg);
 
-	if (fclose(output_file))
+	if (fclose(out))
 	{
 		report("error closing output file: %s: %s\n", output_name,
 			strerror(errno));
