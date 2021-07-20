@@ -19,7 +19,7 @@
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: 2.2.9
-Release: 2%{?dist}
+Release: 4%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -82,6 +82,28 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Tue Jul 20 2021 Felix Kraemer <fkraemer@gemini.edu> 2.2.9-4
+- changed .tito/releasers.conf to be softlinked to
+  /gem_base/usr/share/tito/releasers.conf
+- Fix compile compile time errors.
+- Automatic commit of package [sequencer] minor release [2.2.9-2].
+- add cfg directory to boringfile
+- add release notes for 2.2.9
+- bump version to 2.2.9 and adapt the install docs
+- install build rules in the modern way (if available)
+- snc: better error messages when file operations fail
+
+* Tue Jul 20 2021 Felix Kraemer <fkraemer@gemini.edu>
+- changed .tito/releasers.conf to be softlinked to
+  /gem_base/usr/share/tito/releasers.conf
+- Fix compile compile time errors.
+- Automatic commit of package [sequencer] minor release [2.2.9-2].
+- add cfg directory to boringfile
+- add release notes for 2.2.9
+- bump version to 2.2.9 and adapt the install docs
+- install build rules in the modern way (if available)
+- snc: better error messages when file operations fail
+
 * Thu Jun 10 2021 Matt Rippa <mrippa@gemini.edu> 2.2.9-2
 - add cfg directory to boringfile
 - add release notes for 2.2.9
