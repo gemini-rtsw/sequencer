@@ -8,6 +8,5 @@ include
 lib
 .*.swp
 .tito/releasers.conf
-/.tito/releasers.conf
 /configure/RELEASE.local
 /configure/CONFIG_SITE.local
