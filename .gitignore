@@ -7,6 +7,5 @@ data
 include
 lib
 .*.swp
-.tito/releasers.conf
 /configure/RELEASE.local
 /configure/CONFIG_SITE.local
