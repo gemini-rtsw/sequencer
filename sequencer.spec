@@ -19,7 +19,7 @@
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: 2.2.9
-Release: 3%{?dist}
+Release: 4%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -82,6 +82,9 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Wed Oct 27 2021 Matt Rippa <matt.rippa@noirlab.edu> 2.2.9-4
+- Build for testing/2021q4:latest
+- Automatic commit of package [sequencer] minor release [2.2.9-3].
 * Tue Jun 22 2021 Matt Rippa <mrippa@gemini.edu> 2.2.9-3
 - git rebase -X theirs master
 - install build rules in the modern way (if available)
