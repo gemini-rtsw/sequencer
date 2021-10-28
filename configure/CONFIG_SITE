@@ -18,3 +18,4 @@ RE2C = re2c$(HOSTEXE)
 
 -include $(TOP)/../CONFIG_SITE.local
 -include $(TOP)/configure/CONFIG_SITE.local
+-include $(TOP)/../configure/CONFIG_SITE.local
