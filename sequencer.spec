@@ -20,10 +20,14 @@ Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: 2.2.9
 <<<<<<< HEAD
+<<<<<<< HEAD
 Release: 4%{?dist}
 =======
 Release: 3%{?dist}
 >>>>>>> 160ae25... Automatic commit of package [sequencer] minor release [2.2.9-3].
+=======
+Release: 4%{?dist}
+>>>>>>> fa1caa2... Automatic commit of package [sequencer] minor release [2.2.9-4].
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -86,6 +90,10 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Wed Oct 27 2021 Matt Rippa <matt.rippa@noirlab.edu> 2.2.9-4
+- Build for testing/2021q4:latest
+- Automatic commit of package [sequencer] minor release [2.2.9-3].
+
 * Tue Jul 20 2021 Felix Kraemer <fkraemer@gemini.edu> 2.2.9-4
 - changed .tito/releasers.conf to be softlinked to
   /gem_base/usr/share/tito/releasers.conf
