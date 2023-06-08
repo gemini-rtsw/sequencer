@@ -5,6 +5,14 @@
 %define arch %(uname -m)
 %define checkout %(git log --pretty=format:'%h' -n 1) 
 
+# These defines need to be adjusted to point to the git ref
+# that is to be built
+
+# vendor/upstream git project
+%define vendor_project https://www-csr.bessy.de/control/SoftDist/sequencer/repo/branch-2-2.git
+# vendor git ref (tag or commit hash). Please keep in sync with 'Version' below!
+%define vendor_ref e5e3615
+
 #These global defines are added to prevent stripping
 # symbols on vxWorks cross-compiled code
 # Getting 'strip' to work is probably only needed for
@@ -18,7 +26,7 @@
 
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
-Version: 2.2.9
+Version: 2.2.9.e5e3615
 Release: 4%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
@@ -46,10 +54,20 @@ This is the module %{name}.
 %setup -q 
 
 %build
+# get vendor code
+git clone %{vendor_project} vendor_project
+cd vendor_project
+
+# apply Gemini-specific configuration
+cp ../configure/* configure/
+
 make distclean uninstall
 make
 
 %install
+# cd into the directory containing the vendor sources
+cd vendor_project
+
 export DONT_STRIP=1
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/%{_prefix}/%{name}
@@ -82,98 +100,3 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
-* Wed Oct 27 2021 Matt Rippa <matt.rippa@noirlab.edu> 2.2.9-4
-- Build for testing/2021q4:latest
-- Automatic commit of package [sequencer] minor release [2.2.9-3].
-* Tue Jun 22 2021 Matt Rippa <mrippa@gemini.edu> 2.2.9-3
-- git rebase -X theirs master
-- install build rules in the modern way (if available)
-- snc: better error messages when file operations fail
-- snc, build rules: improve behavior when compilation fails
-- Automatic commit of package [sequencer] minor release [2.2.9-2].
-- add cfg directory to boringfile
-- add release notes for 2.2.9
-- bump version to 2.2.9 and adapt the install docs
-- install build rules in the modern way (if available)
-- snc: better error messages when file operations fail
-
-* Thu Jun 10 2021 Matt Rippa <mrippa@gemini.edu> 2.2.9-2
-- add cfg directory to boringfile
-- add release notes for 2.2.9
-- bump version to 2.2.9 and adapt the install docs
-- install build rules in the modern way (if available)
-- snc: better error messages when file operations fail
-- snc, build rules: improve behavior when compilation fails
-
-* Thu Jun 10 2021 Matt Rippa <mrippa@gemini.edu>
-- add cfg directory to boringfile
-- add release notes for 2.2.9
-- bump version to 2.2.9 and adapt the install docs
-- install build rules in the modern way (if available)
-- snc: better error messages when file operations fail
-- snc, build rules: improve behavior when compilation fails
-
-* Thu Oct 08 2020 fkraemer <fkraemer@gemini.edu> 2.2.8-2
-- applied new version/release scheme and new yum repository structure
-
-* Wed Aug 05 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.2020080504146544bda
-- Release tag enriched with hour and minute (%%H%%M) to be able to build
-  several RPMs a day without messing up the repo (fkraemer@gemini.edu)
-- test commit to test if I can still push changes (fkraemer@gemini.edu)
-
-* Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.20200722f61ed7e
-- finally the right Release tag (fkraemer@gemini.edu)
-
-* Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.20200722.git2b87062
-- new package built with tito
-
-* Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.1.20200722.gite60436b
-- adapted specfiles Release tag (fkraemer@gemini.edu)
-
-* Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.1.20200722
-- bumped specfile (fkraemer@gemini.edu)
-- added sequencer.spec (fkraemer@gemini.edu)
-- added BuildRequirement re2c (fkraemer@gemini.edu)
-
-* Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu>
-- added BuildRequirement re2c (fkraemer@gemini.edu)
-
-* Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu>
-- test
-
-* Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.0.20200722
-- changed path back and Requires tag to epics-base(-devel)
-  (fkraemer@gemini.edu)
-- adapted EPICS Path (fkraemer@gemini.edu)
-
-* Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu>
-- changed path back and Requires tag to epics-base(-devel)
-  (fkraemer@gemini.edu)
-- adapted EPICS Path (fkraemer@gemini.edu)
-
-* Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.20200722
-- adapted Release token (fkraemer@gemini.edu)
-- corrected EPICS_BASE in config/RELEASE (fkraemer@gemini.edu)
-
-* Fri Jul 17 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-2.2.8.20200717gite6b33fb
-- corrected EPICS_BASE in config/RELEASE
-
-* Wed Jul 15 2020 Matt Rippa <mrippa@gemini.edu> 3.15.8-2.2.8.20200715gite29f3d3
-- New epics path and tito releaser tests. (mrippa@gemini.edu)
-
-* Mon Jul 13 2020 Matt Rippa <mrippa@gemini.edu> 3.15.8-2.2.8.20200713gitc7b4fa2
-- Added epics-base to requires (mrippa@gemini.edu)
-- Added .tito/releasers.conf (mrippa@gemini.edu)
-
-* Fri Jul 10 2020 Matt Rippa <mrippa@gemini.edu> 3.15.8-2.2.8.20200710git5c91c94
-- First successful tito build --rpm (mrippa@gemini.edu)
-
-* Fri Jul 10 2020 Matt Rippa <mrippa@gemini.edu> 3.15.8-2.2.8.20200710gitaf3c52b
-- new package built with tito
-
-* Fri Mar 9 2012 Mathew Rippa <mrippa@gemini.edu> 2.1.13-0
-- r3.14.12.2, rpmlint compliant
-* Mon Feb 11 2008 Felix Kraemer <fkraemer@gemini.edu> 2.0.11-0
-- changes to be compliant with EPICS build mechanism
-* Wed Dec 19 2007 Felix Kraemer <fkraemer@gemini.edu> 2.0.11-0
-- initial release
