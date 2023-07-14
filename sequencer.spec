@@ -12,7 +12,7 @@
 ## NOTE: HHZ Berlin is down due to a hacker attack! referring to an earlier commit of our
 ## own repo for now, as I didn't find a mirror with more recent commits
 #%%define vendor_project https://www-csr.bessy.de/control/SoftDist/sequencer/repo/branch-2-2.git
-%define vendor_project git@gitlab.com:nsf-noirlab/gemini/rtsw/support/sequencer.git
+%define vendor_project https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/nsf-noirlab/gemini/rtsw/support/sequencer.git
 # vendor git ref (tag or commit hash). Please keep in sync with 'Version' below!
 %define vendor_ref 00c29dbdfef888c2f32ce9774631b88bd16a06db
 
