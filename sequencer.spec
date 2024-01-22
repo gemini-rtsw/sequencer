@@ -60,6 +60,7 @@ This is the module %{name}.
 # get vendor code
 git clone %{vendor_project} vendor_project
 cd vendor_project
+git checkout %{vendor_ref}
 
 # apply Gemini-specific configuration
 cp ../configure/* configure/
