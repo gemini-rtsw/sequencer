@@ -17,7 +17,7 @@
 # vendor/upstream git project
 %define vendor_project https://github.com/epics-modules/sequencer.git
 # vendor git ref (tag or commit hash). Please keep in sync with 'Version' below!
-%define vendor_ref 00c29dbdfef888c2f32ce9774631b88bd16a06db
+%define vendor_ref R2-2-9
 
 #These global defines are added to prevent stripping
 # symbols on vxWorks cross-compiled code
