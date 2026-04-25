@@ -34,7 +34,7 @@ Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 # version follows SemVer release tagging; vendor_ref pins the exact upstream snapshot
 Version: 2.2.9
-Release: 0.3.rc3
+Release: 0.4.rc4
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -111,6 +111,13 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Fri Apr 24 2026 Matt Rippa <matt.rippa@noirlab.edu> 2.2.9-0.4.rc4
+- RTEMS-858: Bootstrap branch snapshot metadata
+- RTEMS-858: Pin sequencer vendor source to upstream R2-2-9
+- RTEMS-858: Fix support-layer CI base container
+- RTEMS-858: Prepare sequencer v2.2.9-rc.2 from corrected branch anchor
+- SYSCO-876: Rebuild New Testing Release
+
 * Fri Apr 24 2026 Matt Rippa <matt.rippa@noirlab.edu> 2.2.9-0.2.rc2
 - RTEMS-858: Bootstrap branch snapshot metadata
 - RTEMS-858: Bootstrap branch snapshot metadata
