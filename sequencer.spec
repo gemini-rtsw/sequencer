@@ -34,7 +34,7 @@ Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 # version follows SemVer release tagging; vendor_ref pins the exact upstream snapshot
 Version: 2.2.9
-Release: 0.2.rc2
+Release: 0.3.rc3
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
