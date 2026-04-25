@@ -3,16 +3,19 @@
 %define repository gemdev
 %define debug_package %{nil}
 %define arch %(uname -m)
-%define checkout %(git log --pretty=format:'%h' -n 1) 
+%define checkout %(git log --pretty=format:'%h' -n 1)
 
 # These defines need to be adjusted to point to the git ref
 # that is to be built
 
+# Tip 1: git remote add vendor https://github.com/epics-modules/sequencer.git
+# to your development sandbox to easily track both vendor/upstream and
+# origin/gemini.
+
+# Tip 2: git ls-remote --tags vendor to see sha and refs/tags side-by-side
+
 # vendor/upstream git project
-## NOTE: HHZ Berlin is down due to a hacker attack! referring to an earlier commit of our
-## own repo for now, as I didn't find a mirror with more recent commits
-#%%define vendor_project https://www-csr.bessy.de/control/SoftDist/sequencer/repo/branch-2-2.git
-%define vendor_project https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/nsf-noirlab/gemini/rtsw/support/sequencer.git
+%define vendor_project https://github.com/epics-modules/sequencer.git
 # vendor git ref (tag or commit hash). Please keep in sync with 'Version' below!
 %define vendor_ref 00c29dbdfef888c2f32ce9774631b88bd16a06db
 
@@ -29,8 +32,9 @@
 
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
-Version: 2.2.9.e5e3615
-Release: 4%{?dist}
+# version follows SemVer release tagging; vendor_ref pins the exact upstream snapshot
+Version: 2.2.9
+Release: 0.2.rc2
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -64,6 +68,9 @@ git checkout %{vendor_ref}
 
 # apply Gemini-specific configuration
 cp ../configure/* configure/
+rm -f configure/RELEASE.local
+rm -f configure/RELEASE.linux-x86_64.Common
+rm -f configure/RELEASE.local.linux-x86_64
 
 make distclean uninstall
 make
@@ -104,3 +111,15 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Fri Apr 24 2026 Matt Rippa <matt.rippa@noirlab.edu> 2.2.9-0.2.rc2
+- RTEMS-858: Bootstrap branch snapshot metadata
+- RTEMS-858: Bootstrap branch snapshot metadata
+- RTEMS-858: Align sequencer release prep with vendor rc.2 packaging
+- SYSCO-876: Rebuild New Testing Release
+
+* Fri Apr 24 2026 Matt Rippa <matt.rippa@noirlab.edu> 2.2.9-0.2.rc2
+- 
+
+* Fri Apr 24 2026 Matt Rippa <matt.rippa@noirlab.edu> 2.2.9-0.2.rc2
+- move release metadata from rc.1 to rc.2
+- switch sequencer packaging to vendor-style checkout from epics-modules
