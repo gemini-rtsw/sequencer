@@ -40,9 +40,9 @@ Prefix: %{_prefix}
 ## Pin to the exact EPICS 7.0.7 / RTEMS 6.2 build so the RTEMS-mvme2700
 ## executable link is reproducible while we chase the Stack_checker_Reporter
 ## issue. Must build against this RPM and no other.
-BuildRequires: epics-base-devel = 7.0.7-0.gitd18bee6.el8
+BuildRequires: epics-base-devel = 7.0.7-0.git.16f5056.el8
 BuildRequires: re2c
-Requires: epics-base = 7.0.7-0.gitd18bee6.el8
+## (runtime Requires removed: cross-compiled VME/build-only artifact, never runs on host)
 ## Switch dependency checking off
 ## AutoReqProv: no
 
